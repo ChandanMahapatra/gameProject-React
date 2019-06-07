@@ -18,8 +18,25 @@ class GameContent extends Component {
     });
   }
 
+  //Do I need to unmount the components if they are getting switched?
+  renderMenu() {
+    console.log(this.state.menuState);
+    if (this.state.menuState === 1) {
+      return <Game changeMenu={this.changeMenu} />;
+    } else if (this.state.menuState === 2) {
+      return <Instructions changeMenu={this.changeMenu} />;
+    } else {
+      return <Home changeMenu={this.changeMenu} />;
+    }
+  }
+
   render() {
-    //How can I put all of this in function?
+    return <div>{this.renderMenu()}</div>;
+  }
+
+  /*
+  render() {
+    //Inside Render
     const currentMenu = this.state.menuState;
     console.log(currentMenu);
     if (currentMenu === 1) {
@@ -30,6 +47,7 @@ class GameContent extends Component {
       return <Home changeMenu={this.changeMenu} />;
     }
   }
+*/
 }
 
 export default GameContent;
