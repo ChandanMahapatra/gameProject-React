@@ -8,6 +8,7 @@ class GameContent extends Component {
     super();
     this.state = {
       menuState: 0
+      //    playerTurn: 0
     };
     this.changeMenu = this.changeMenu.bind(this);
   }
@@ -20,9 +21,15 @@ class GameContent extends Component {
 
   //Do I need to unmount the components if they are getting switched?
   renderMenu() {
+    //const { playerTurn } = this.state;
     console.log(this.state.menuState);
     if (this.state.menuState === 1) {
-      return <Game changeMenu={this.changeMenu} />;
+      return (
+        <Game
+          changeMenu={this.changeMenu}
+          //  playerTurn = {playerTurn}
+        />
+      );
     } else if (this.state.menuState === 2) {
       return <Instructions changeMenu={this.changeMenu} />;
     } else {
